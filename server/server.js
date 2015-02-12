@@ -20,6 +20,7 @@ app.set('views', __dirname + '/views');
 
 app.use('/assets/img', express.static(path.resolve(__dirname + '/../dist/img/')));
 app.use('/assets/js', express.static(path.resolve(__dirname + '/../dist/js')));
+app.use('/static/js', express.static(path.resolve(__dirname + '/../dist/js')));
 app.use('/assets/css', express.static(path.resolve(__dirname + '/../dist/css')));
 
 app.use(router);

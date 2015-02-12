@@ -5,11 +5,15 @@ import React from 'react';
 module.exports = React.createClass({
   render() {
     return (
-      <form>
-        <input type="text" placeholder="username" name="username" />
-        <input type="password" placeholder="password" name="password" />
-        <button>Login</button>
-      </form>
+      <div className="ui form segment">
+        <div className="field">
+          <input type="text" name="username" ref="username" placeholder="username" />
+        </div>
+        <div className="field">
+          <input type="password" name="password" ref="password" placeholder="password" />
+        </div>
+        <div className="ui submit button">Login</div>
+      </div>
     );
   }
 });

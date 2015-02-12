@@ -14,7 +14,15 @@ const App = React.createClass({
             <li><Link to="login">Login</Link></li>
           </ul>
         </header>
-        <RouteHandler/>
+        <div className="ui page grid">
+          <div className="row">
+            <div className="three wide computer only column"></div>
+            <div className="ten wide computer sixteen wide tablet sixteen wide mobile column">
+              <RouteHandler/>
+            </div>
+            <div className="three wide computer only column"></div>
+          </div>
+        </div>
       </div>
     );
   }

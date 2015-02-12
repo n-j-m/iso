@@ -2,6 +2,7 @@
 
 var gulp = require('gulp');
 var del = require('del');
+var runSequence = require('run-sequence');
 var gutil = require('gulp-util');
 var size = require('gulp-size');
 var browserSync = require('browser-sync');
@@ -123,20 +124,32 @@ gulp.task('styles', ['sass'], function () {
 });
 
 gulp.task('static:styles', function() {
-  return gulp.src(__dirname + '/app/styles/**/*.css')
+  return gulp.src(__dirname + '/node_modules/semantic-ui/dist/semantic.min.css')
     .pipe(gulp.dest(__dirname + '/dist/css'))
     .pipe(browserSync.reload({stream: true}));
-})
+});
 
-gulp.task('dev', [
-  'clean',
-  'images',
-  'styles',
-  'static:styles',
-  'supervisor',
-  'webpack-dev-server',
-  'connect'
-], function () {
+gulp.task('static:scripts', function() {
+  return gulp.src([
+    __dirname + '/node_modules/jquery/dist/jquery.min.js',
+    __dirname + '/node_modules/jquery/dist/jquery.min.map',
+    __dirname + '/node_modules/semantic-ui/dist/semantic.min.js'
+  ])
+    .pipe(gulp.dest(__dirname + '/dist/js'))
+    .pipe(browserSync.reload({stream: true}));
+});
+
+gulp.task('dev', function () {
+  runSequence(
+    'clean',
+    'images',
+    'styles',
+    'static:styles',
+    'static:scripts',
+    'supervisor',
+    'webpack-dev-server',
+    'connect'
+  );
   gulp.watch(__dirname + '/app/images/**/*', ['images']);
   gulp.watch(__dirname + '/app/styles/**/*', ['styles']);
 });
@@ -174,4 +187,6 @@ gulp.task('build:styles', ['styles'], function () {
     .pipe(gulp.dest(__dirname + '/dist/css/'));
 });
 
-gulp.task('build', ['clean', 'build:styles', 'images', 'webpack:build']);
+gulp.task('build', function(cb) {
+  runSequence('clean', ['build:styles', 'images', 'webpack:build'], cb);
+});
