@@ -122,10 +122,17 @@ gulp.task('styles', ['sass'], function () {
     .pipe(browserSync.reload({stream: true}));
 });
 
+gulp.task('static:styles', function() {
+  return gulp.src(__dirname + '/app/styles/**/*.css')
+    .pipe(gulp.dest(__dirname + '/dist/css'))
+    .pipe(browserSync.reload({stream: true}));
+})
+
 gulp.task('dev', [
   'clean',
   'images',
   'styles',
+  'static:styles',
   'supervisor',
   'webpack-dev-server',
   'connect'

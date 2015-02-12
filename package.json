@@ -3,7 +3,9 @@
   "version": "0.0.1",
   "description": "An ES6 isomorphic ReactJS boilerplate",
   "main": "server/server.js",
-  "scripts": {},
+  "scripts": {
+    "gulp": "gulp"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/iam4x/es6-react-boilerplate.git"

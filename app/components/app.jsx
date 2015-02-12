@@ -11,6 +11,7 @@ const App = React.createClass({
           <ul>
             <li><Link to='app'>Home</Link></li>
             <li><Link to='guides'>Guides</Link></li>
+            <li><Link to="login">Login</Link></li>
           </ul>
         </header>
         <RouteHandler/>
