@@ -1,5 +1,5 @@
 {
-  "name": "es6-react-boilerplate",
+  "name": "iso",
   "version": "0.0.1",
   "description": "An ES6 isomorphic ReactJS boilerplate",
   "main": "server/server.js",
@@ -8,11 +8,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/iam4x/es6-react-boilerplate.git"
+    "url": "https://github.com/n-j-m/iso.git"
   },
-  "homepage": "https://github.com/iam4x/es6-react-boilerplate",
-  "bugs": "https://github.com/iam4x/es6-react-boilerplate/issues",
-  "author": "iam4x",
+  "homepage": "https://github.com/n-j-m/iso",
+  "bugs": "https://github.com/n-j-m/iso/issues",
+  "author": "n-j-m",
   "license": "MIT",
   "dependencies": {
     "6to5": "^3.3.12",
