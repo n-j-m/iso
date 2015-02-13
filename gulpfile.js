@@ -124,8 +124,16 @@ gulp.task('styles', ['sass'], function () {
 });
 
 gulp.task('static:styles', function() {
-  return gulp.src(__dirname + '/node_modules/semantic-ui/dist/semantic.min.css')
+  return gulp.src([
+      __dirname + '/node_modules/semantic-ui/dist/semantic.min.css'
+    ])
     .pipe(gulp.dest(__dirname + '/dist/css'))
+    .pipe(browserSync.reload({stream: true}));
+});
+
+gulp.task('static:assets', function() {
+  return gulp.src(__dirname + '/node_modules/semantic-ui/dist/themes/**/*')
+    .pipe(gulp.dest(__dirname + '/dist/css/themes'))
     .pipe(browserSync.reload({stream: true}));
 });
 
@@ -145,6 +153,7 @@ gulp.task('dev', function () {
     'images',
     'styles',
     'static:styles',
+    'static:assets',
     'static:scripts',
     'supervisor',
     'webpack-dev-server',
