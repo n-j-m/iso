@@ -10,12 +10,20 @@ import authStore from '../stores/auth_store';
 const App = React.createClass({
   mixins: [Reflux.ListenerMixin],
 
+  getInitialState() {
+    return {
+      user: null 
+    };
+  },
+
   componentDidMount() {
     this.listenTo(authStore, this.onAuth);
   },
 
-  onAuth(user) {
-    console.log('user:', user);
+  onAuth(userResponse) {
+    // TODO - Handle errors
+    var user = userResponse.user;
+    this.setState({user});
   },
 
   render() {
@@ -24,8 +32,8 @@ const App = React.createClass({
         <div className="row">
           <div className="three wide computer only column"></div>
           <div className="ten wide computer sixteen wide tablet sixteen wide mobile column">
-            <Nav />
-            <RouteHandler/>
+            <Nav user={this.state.user} />
+            <RouteHandler />
           </div>
           <div className="three wide computer only column"></div>
         </div>

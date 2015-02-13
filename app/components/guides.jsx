@@ -1,8 +1,11 @@
 'use strict';
 
 import React from 'react';
+import AuthMixin from '../utils/auth_mixin';
 
 const Guides = React.createClass({
+  mixins: [AuthMixin],
+  
   render() {
     return (
       <div>

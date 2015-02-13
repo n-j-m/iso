@@ -1,9 +1,12 @@
 'use strict';
 
 import React from 'react';
+import AuthMixin from '../utils/auth_mixin';
 
 const Home = React.createClass({
-  render: function () {
+  mixins: [AuthMixin],
+
+  render() {
     return (
       <h1>Home</h1>
     );

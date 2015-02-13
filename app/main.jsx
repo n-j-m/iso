@@ -1,5 +1,7 @@
 'use strict';
 
+require('6to5/register');
+
 import React from 'react';
 import Router from 'react-router';
 
