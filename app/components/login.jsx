@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import AuthActions from '../actions/auth_actions';
 
 module.exports = React.createClass({
   render() {
@@ -14,9 +15,18 @@ module.exports = React.createClass({
           <div className="field">
             <input type="password" name="password" ref="password" placeholder="password" />
           </div>
-          <button className="ui submit button">Login</button>
+          <button onClick={this.handleLogin} className="ui submit button">Login</button>
         </div>
       </div>
     );
+  },
+
+  handleLogin(evt) {
+    evt.preventDefault();
+
+    var username = this.refs.username.getDOMNode().value;
+    var password = this.refs.password.getDOMNode().value;
+
+    AuthActions.login(username, password);
   }
 });
