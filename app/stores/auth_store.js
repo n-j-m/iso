@@ -22,17 +22,18 @@ const AuthStore = Reflux.createStore({
   listenables: AuthActions,
 
   onLogin(username, password) {
-    api.login(username, password).then((user) =>{
-      this.user = user;
-      this.trigger({user});
-    }).catch(error => {
-      this.trigger({error});
-    });
+    api.login(username, password)
+      .then((user) =>{
+        this.user = user;
+        this.trigger({user});
+      }).catch(error => {
+        this.trigger({error});
+      });
   },
 
   onLogout() {
     this.user = null;
-    this.trigger(null);
+    this.trigger({user: null});
   }
 
 });

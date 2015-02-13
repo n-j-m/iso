@@ -6,9 +6,10 @@ import Nav from './nav';
 import Reflux from 'reflux';
 
 import authStore from '../stores/auth_store';
+import {Navigation} from 'react-router';
 
 const App = React.createClass({
-  mixins: [Reflux.ListenerMixin],
+  mixins: [Reflux.ListenerMixin, Navigation],
 
   getInitialState() {
     return {
@@ -24,6 +25,11 @@ const App = React.createClass({
     // TODO - Handle errors
     var user = userResponse.user;
     this.setState({user});
+    if (user) {
+      this.transitionTo('/');
+    } else {
+      this.transitionTo('/login');
+    }
   },
 
   render() {

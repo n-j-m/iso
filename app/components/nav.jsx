@@ -3,7 +3,13 @@
 import React from 'react';
 import {Link} from 'react-router';
 
-module.exports = React.createClass({
+import AuthLink from './authlink';
+
+const Nav = React.createClass({
+
+  propTypes: {
+    user: React.PropTypes.object
+  },
 
   render() {
 
@@ -15,12 +21,12 @@ module.exports = React.createClass({
         <Link to="guides" className="item">
           <i className="help circle icon"></i> Guides
         </Link>
-        <Link to="login" className="right item">
-          <i className="sign in icon"></i> Login
-        </Link>
+        <AuthLink user={this.props.user} />
       </div>
     );
 
   }
 
 });
+
+module.exports = Nav;
