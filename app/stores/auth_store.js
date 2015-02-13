@@ -22,9 +22,6 @@ const AuthStore = Reflux.createStore({
   listenables: AuthActions,
 
   onLogin(username, password) {
-    console.log('LOGIN ACTION')
-    console.log('username:', username);
-    console.log('password:', password);
     api.login(username, password).then((user) =>{
       this.user = user;
       this.trigger({user});
@@ -34,7 +31,6 @@ const AuthStore = Reflux.createStore({
   },
 
   onLogout() {
-    console.log('LOGOUT ACTION');
     this.user = null;
     this.trigger(null);
   }
