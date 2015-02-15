@@ -81,7 +81,9 @@ gulp.task('webpack-dev-server', function () {
 
   new WebpackDevServer(webpack(config), {
     publicPath: config.output.publicPath,
-    hot: true
+    hot: true,
+    quite: false,
+    noInfo: true
   }).listen(8090, 'localhost', function (err) {
     if (err) {
       throw new gutil.PluginError('webpack-dev-server', err);

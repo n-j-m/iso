@@ -1,4 +1,4 @@
-var endpoint = '/api/v1';
+const endpoint = '/api/v1';
 
 import request from 'superagent';
 
@@ -10,13 +10,13 @@ const api = {
 
   login(username, password) {
     return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        var users = _users.filter((u) => {
-          return (u.username === username && u.password === password);
+      request
+        .post(`${endpoint}/login`)
+        .auth(username, password)
+        .end(res => {
+          if (res.ok) return resolve(res.body);
+          reject(res.error);
         });
-        if (users.length > 0) resolve(users[0]);
-        else reject({error: new Error('Invalid username and/or password')});
-      }, 0);
     });
   }
 
