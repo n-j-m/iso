@@ -6,7 +6,7 @@ var runSequence = require('run-sequence');
 var gutil = require('gulp-util');
 var size = require('gulp-size');
 var browserSync = require('browser-sync');
-var supervisor = require('gulp-supervisor');
+var nodemon = require('gulp-nodemon');
 var imagemin = require('gulp-imagemin');
 var rubySass = require('gulp-ruby-sass-ns');
 var minifyCSS = require('gulp-minify-css');
@@ -60,7 +60,7 @@ gulp.task('connect', function () {
   });
 });
 
-gulp.task('webpack-dev-server', function () {
+gulp.task('webpack-dev-server', function (cb) {
   var config = Object.create(webpackConfig);
   config.devtool = 'eval';
   config.debug = true;
@@ -89,14 +89,17 @@ gulp.task('webpack-dev-server', function () {
       throw new gutil.PluginError('webpack-dev-server', err);
     }
     gutil.log('[webpack-dev-server]', 'started on port 8090');
+    cb();
   });
 });
 
-gulp.task('supervisor', function () {
-  supervisor(__dirname + '/server/server.js', {
+gulp.task('nodemon', function (cb) {
+  nodemon({
+    script: __dirname + '/server/server.js',
     watch: ['server'],
-    extensions: ['jsx', 'js']
-  });
+    ext: 'js jsx'
+  })
+  .on('start', function() { cb(); });
 });
 
 gulp.task('images', function () {
@@ -157,7 +160,7 @@ gulp.task('dev', function () {
     'static:styles',
     'static:assets',
     'static:scripts',
-    'supervisor',
+    'nodemon',
     'webpack-dev-server',
     'connect'
   );
