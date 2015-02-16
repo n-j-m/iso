@@ -6,6 +6,7 @@ import Nav from './nav/nav';
 import Reflux from 'reflux';
 
 import authStore from '../stores/auth_store';
+import loadingStore from '../stores/loading_store';
 import {Navigation} from 'react-router';
 
 const App = React.createClass({
@@ -19,6 +20,11 @@ const App = React.createClass({
 
   componentDidMount() {
     this.listenTo(authStore, this.onAuth);
+    this.listenTo(loadingStore, this.onLoading);
+  },
+
+  onLoading(isLoading) {
+    this.setState({isLoading});
   },
 
   onAuth(userResponse) {
@@ -38,7 +44,7 @@ const App = React.createClass({
         <div className="row">
           <div className="col-lg-2"></div>
           <div className="col-lg-10 col-md-12">
-            <Nav user={this.state.user} />
+            <Nav user={this.state.user} isLoading={this.state.isLoading} />
             <RouteHandler />
           </div>
           <div className="col-lg-2"></div>

@@ -1,6 +1,7 @@
 const endpoint = '/api/v1';
 
 import request from 'superagent';
+import LoadingActions from '../actions/loading_actions';
 
 const _users = [
   {username: 'test', password: 'test'}
@@ -14,6 +15,7 @@ const api = {
         .post(`${endpoint}/login`)
         .auth(username, password)
         .end(res => {
+          LoadingActions.loadingComplete();
           if (res.ok) return resolve(res.body);
           reject(res.error);
         });
