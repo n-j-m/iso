@@ -3,20 +3,30 @@
 import React from 'react';
 import AuthActions from '../actions/auth_actions';
 
-module.exports = React.createClass({
+const Login = React.createClass({
   render() {
     return (
       <div>
         <h1>Login</h1>
-        <div className="ui form segment">
-          <div className="field">
-            <input type="text" name="username" ref="username" placeholder="username" />
+        <form className="form-horizontal">
+          <div className="form-group">
+            <div className="col-sm-12 col-lg-3">
+              <input type="text" className="form-control" name="username" ref="username" placeholder="username" />
+            </div>
           </div>
-          <div className="field">
-            <input type="password" name="password" ref="password" placeholder="password" />
+          <div className="form-group">
+            <div className="col-sm-12 col-lg-3">
+              <input type="text" className="form-control" name="password" ref="password" placeholder="password" />
+            </div>
           </div>
-          <button onClick={this.handleLogin} className="ui submit button">Login</button>
-        </div>
+          <div className="form-group">
+            <div className="col-sm-12 col-lg-3">
+              <button onClick={this.handleLogin} type="submit" className="btn btn-primary">
+                <i className="glyphicon glyphicon-log-in"></i> Sign In
+              </button>
+            </div>
+          </div>
+        </form>
       </div>
     );
   },
@@ -30,3 +40,5 @@ module.exports = React.createClass({
     AuthActions.login(username, password);
   }
 });
+
+export default Login

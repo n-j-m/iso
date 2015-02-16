@@ -2,7 +2,7 @@
 
 import React from 'react';
 import {RouteHandler, Link} from 'react-router';
-import Nav from './nav';
+import Nav from './nav/nav';
 import Reflux from 'reflux';
 
 import authStore from '../stores/auth_store';
@@ -34,18 +34,18 @@ const App = React.createClass({
 
   render() {
     return (
-      <div className="ui page grid">
+      <div className="container">
         <div className="row">
-          <div className="three wide computer only column"></div>
-          <div className="ten wide computer sixteen wide tablet sixteen wide mobile column">
+          <div className="col-lg-2"></div>
+          <div className="col-lg-10 col-md-12">
             <Nav user={this.state.user} />
             <RouteHandler />
           </div>
-          <div className="three wide computer only column"></div>
+          <div className="col-lg-2"></div>
         </div>
       </div>
     );
   }
 });
 
-module.exports = App;
+export default App;

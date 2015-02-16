@@ -7,4 +7,4 @@ const AuthActions = Reflux.createActions({
   'logout': {asyncResult: false}
 });
 
-module.exports = AuthActions;
+export default AuthActions;

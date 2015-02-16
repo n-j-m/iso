@@ -133,15 +133,15 @@ gulp.task('styles', ['sass'], function () {
 
 gulp.task('static:styles', function() {
   return gulp.src([
-      __dirname + '/node_modules/semantic-ui/dist/semantic.min.css'
+      __dirname + '/node_modules/bootstrap/dist/css/**/*.min.css'
     ])
     .pipe(gulp.dest(__dirname + '/dist/css'))
     .pipe(browserSync.reload({stream: true}));
 });
 
 gulp.task('static:assets', function() {
-  return gulp.src(__dirname + '/node_modules/semantic-ui/dist/themes/**/*')
-    .pipe(gulp.dest(__dirname + '/dist/css/themes'))
+  return gulp.src(__dirname + '/node_modules/bootstrap/dist/fonts/**/*')
+    .pipe(gulp.dest(__dirname + '/dist/fonts'))
     .pipe(browserSync.reload({stream: true}));
 });
 
@@ -149,7 +149,7 @@ gulp.task('static:scripts', function() {
   return gulp.src([
     __dirname + '/node_modules/jquery/dist/jquery.min.js',
     __dirname + '/node_modules/jquery/dist/jquery.min.map',
-    __dirname + '/node_modules/semantic-ui/dist/semantic.min.js'
+    __dirname + '/node_modules/bootstrap/dist/js/bootstrap.min.js'
   ])
     .pipe(gulp.dest(__dirname + '/dist/js'))
     .pipe(browserSync.reload({stream: true}));
