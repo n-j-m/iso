@@ -99,7 +99,10 @@ gulp.task('nodemon', function (cb) {
     watch: ['server'],
     ext: 'js jsx'
   })
-  .on('start', function() { cb(); });
+  .on('start', function() {
+    // Give server time to start
+    setTimeout(cb, 2000);
+  });
 });
 
 gulp.task('images', function () {
