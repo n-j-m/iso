@@ -14,6 +14,10 @@ const Nav = React.createClass({
 
   render() {
 
+    var spinner = (
+      this.props.isLoading ? <i className="fa fa-spinner fa-pulse"></i> : 'iso'
+    );
+
     return (
       <nav className="navbar navbar-inverse navbar-fixed-top">
         <div className="container">
@@ -24,7 +28,7 @@ const Nav = React.createClass({
               <span className="icon-bar"></span>
               <span className="icon-bar"></span>
             </button>
-            <Link to="home" className="navbar-brand">iso</Link>
+            <Link to="home" className="navbar-brand">{spinner}</Link>
           </div>
           <div id="navbar" className="navbar-collapse collapse">
             <ul className="nav navbar-nav">

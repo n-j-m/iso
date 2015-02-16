@@ -133,14 +133,18 @@ gulp.task('styles', ['sass'], function () {
 
 gulp.task('static:styles', function() {
   return gulp.src([
-      __dirname + '/node_modules/bootstrap/dist/css/**/*.min.css'
+      __dirname + '/node_modules/bootstrap/dist/css/**/*.min.css',
+      __dirname + '/node_modules/font-awesome/css/**/*.min.css'
     ])
     .pipe(gulp.dest(__dirname + '/dist/css'))
     .pipe(browserSync.reload({stream: true}));
 });
 
 gulp.task('static:assets', function() {
-  return gulp.src(__dirname + '/node_modules/bootstrap/dist/fonts/**/*')
+  return gulp.src([
+      __dirname + '/node_modules/bootstrap/dist/fonts/**/*',
+      __dirname + '/node_modules/font-awesome/fonts/**/*'
+    ])
     .pipe(gulp.dest(__dirname + '/dist/fonts'))
     .pipe(browserSync.reload({stream: true}));
 });
