@@ -18,9 +18,6 @@ const Nav = React.createClass({
         <Link to="home" className="item">
           <i className="home icon"></i> Home
         </Link>
-        <Link to="guides" className="item">
-          <i className="help circle icon"></i> Guides
-        </Link>
         <AuthLink user={this.props.user} />
       </div>
     );
