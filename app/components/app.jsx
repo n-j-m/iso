@@ -9,6 +9,8 @@ import authStore from '../stores/auth_store';
 import loadingStore from '../stores/loading_store';
 import {Navigation} from 'react-router';
 
+import TransitionMixin from '../utils/transition_mixin';
+
 const App = React.createClass({
   mixins: [Reflux.ListenerMixin, Navigation],
 

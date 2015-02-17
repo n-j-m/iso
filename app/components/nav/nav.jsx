@@ -9,7 +9,8 @@ import NavLink from './navlink';
 const Nav = React.createClass({
 
   propTypes: {
-    user: React.PropTypes.object
+    user: React.PropTypes.object.isRequired,
+    isLoading: React.PropTypes.bool.isRequired
   },
 
   render() {
@@ -17,6 +18,8 @@ const Nav = React.createClass({
     var spinner = (
       this.props.isLoading ? <i className="fa fa-spinner fa-pulse"></i> : 'iso'
     );
+
+    console.log(spinner);
 
     return (
       <nav className="navbar navbar-inverse navbar-fixed-top">

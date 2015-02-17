@@ -1,3 +1,4 @@
+'use strict';
 
 import authStore from '../stores/auth_store';
 
@@ -13,4 +14,4 @@ const AuthMixin = {
 
 };
 
-module.exports = AuthMixin;
+export default AuthMixin;
