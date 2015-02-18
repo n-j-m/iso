@@ -13,18 +13,18 @@ const Login = React.createClass({
         <h1>Login</h1>
         <form className="form-horizontal">
           <div className="form-group">
-            <div className="col-sm-12 col-lg-3">
+            <div className="col-xs-12 col-sm-8 col-md-6 col-lg-5">
               <input onKeyPress={this.handleKeyPress} type="text" className="form-control" name="username" ref="username" placeholder="username" />
             </div>
           </div>
           <div className="form-group">
-            <div className="col-sm-12 col-lg-3">
+            <div className="col-xs-12 col-sm-8 col-md-6 col-lg-5">
               <input onKeyPress={this.handleKeyPress} type="password" className="form-control" name="password" ref="password" placeholder="password" />
             </div>
           </div>
           <div className="form-group">
-            <div className="col-sm-12 col-lg-3">
-              <button onClick={this.handleSubmit} type="submit" className="btn btn-primary">
+            <div className="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+              <button onClick={this.handleSubmit} type="submit" className="btn btn-primary btn-block">
                 <i className="glyphicon glyphicon-log-in"></i> Sign In
               </button>
             </div>

@@ -11,12 +11,15 @@ import {Navigation} from 'react-router';
 
 import TransitionMixin from '../utils/transition_mixin';
 
+const DEFAULT_USER = authStore.getDefaultUser();
+
 const App = React.createClass({
   mixins: [Reflux.ListenerMixin, Navigation],
 
   getInitialState() {
     return {
-      user: null 
+      user: authStore.getUser(),
+      isLoading: false
     };
   },
 
@@ -33,23 +36,23 @@ const App = React.createClass({
     // TODO - Handle errors
     var user = userResponse.user;
     this.setState({user});
-    if (user) {
-      this.transitionTo('/');
-    } else {
+    if (user === DEFAULT_USER) {
       this.transitionTo('/login');
+    } else {
+      this.transitionTo('/');
     }
   },
 
   render() {
     return (
-      <div className="container">
-        <div className="row">
-          <div className="col-lg-2"></div>
-          <div className="col-lg-10 col-md-12">
-            <Nav user={this.state.user} isLoading={this.state.isLoading} />
-            <RouteHandler />
+      <div>
+        <Nav user={this.state.user} isLoading={this.state.isLoading} />
+        <div className="container">
+          <div className="row">
+            <div className="col-sm-8 col-sm-offset-2 col-xs-12">
+              <RouteHandler />
+            </div>
           </div>
-          <div className="col-lg-2"></div>
         </div>
       </div>
     );

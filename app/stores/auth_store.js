@@ -5,9 +5,14 @@ import AuthActions from '../actions/auth_actions';
 
 import api from '../utils/api';
 
+const DEFAULT_USER = {username: '__DEFAULT__'};
+
 const GetUserMixin = {
   getUser() {
     return this.user;
+  },
+  getDefaultUser() {
+    return DEFAULT_USER;
   }
 }
 
@@ -16,7 +21,7 @@ const AuthStore = Reflux.createStore({
   mixins: [GetUserMixin],
 
   init() {
-    this.user = null;
+    this.user = this.getDefaultUser();
   },
 
   listenables: AuthActions,
@@ -32,8 +37,8 @@ const AuthStore = Reflux.createStore({
   },
 
   onLogout() {
-    this.user = null;
-    this.trigger({user: null});
+    this.user = this.getDefaultUser();
+    this.trigger({user: this.user});
   }
 
 });
