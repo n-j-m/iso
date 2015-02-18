@@ -1,10 +1,10 @@
-'use strict';
+"use strict";
 
-import React from 'react';
-import {Link} from 'react-router';
+import React from "react";
+import {Link} from "react-router";
 
-import AuthLink from './authlink';
-import NavLink from './navlink';
+import AuthLink from "./authlink";
+import NavLink from "./navlink";
 
 const Nav = React.createClass({
 
@@ -16,7 +16,7 @@ const Nav = React.createClass({
   render() {
 
     var spinner = (
-      this.props.isLoading ? <i className="fa fa-spinner fa-pulse"></i> : 'iso'
+      this.props.isLoading ? <i className="fa fa-spinner fa-pulse"></i> : "iso"
     );
 
     return (

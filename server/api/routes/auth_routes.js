@@ -1,16 +1,16 @@
-'use strict';
+"use strict";
 
-import AuthController from '../controllers/auth';
+import AuthController from "../controllers/auth";
 
-import {Router} from 'express';
+import {Router} from "express";
 
 const router = Router();
 
-const authRouter = router.route('/login');
+const authRouter = router.route("/login");
 
 authRouter
   .post(AuthController.isAuthenticated, (req, res) => {
     res.json(req.user);
   });
 
-module.exports = router;
+export default router;

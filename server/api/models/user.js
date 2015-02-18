@@ -1,7 +1,9 @@
-var mongoose = require('mongoose');
-var bcrypt = require('bcrypt-nodejs');
+"use strict";
 
-var UserSchema = mongoose.Schema({
+import mongoose from "mongoose";
+import bcrypt from "bcrypt-nodejs";
+
+let UserSchema = mongoose.Schema({
   username: {
     type: String,
     unique: true,
@@ -14,17 +16,17 @@ var UserSchema = mongoose.Schema({
 });
 
 // Execute before each user.save() call
-UserSchema.pre('save', function(next) {
-  var user = this;
+UserSchema.pre("save", (next) => {
+  let user = this;
 
-  // Break out if the password hasn't changed
-  if (!user.isModified('password')) return next();
+  // Break out if the password hasn"t changed
+  if (!user.isModified("password")) return next();
 
   // Password changed so we need to hash it
-  bcrypt.genSalt(5, function(err, salt) {
+  bcrypt.genSalt(5, (err, salt) => {
     if (err) return next(err);
 
-    bcrypt.hash(user.password, salt, null, function(err, hash) {
+    bcrypt.hash(user.password, salt, null, (err, hash) => {
       if (err) return next(err);
 
       user.password = hash;
@@ -33,11 +35,11 @@ UserSchema.pre('save', function(next) {
   });
 });
 
-UserSchema.methods.verifyPassword = function(password, callback) {
-  bcrypt.compare(password, this.password, function(err, isMatch) {
+UserSchema.methods.verifyPassword = (password, callback) => {
+  bcrypt.compare(password, this.password, (err, isMatch) => {
     if (err) callback(err);
     callback(null, isMatch);
   });
 };
 
-module.exports = mongoose.model('User', UserSchema);
+export default mongoose.model("User", UserSchema);
