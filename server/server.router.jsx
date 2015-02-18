@@ -10,9 +10,9 @@ module.exports = (req, res) => {
     routes: routes,
     location: req.url,
     onAbort: function (redirect) {
-      // TODO: Try to render the good page with re-creating a Router,
-      // and with modifying req with `redirect.to`
-      res.writeHead(303, {'Location': redirect.to});
+      // If redirect does not exist, render the login route
+      const location = redirect ? redirect.to : '/login';
+      res.writeHead(303, {'Location': location});
       return res.send();
     },
     onError: function (err) {

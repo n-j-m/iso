@@ -19,8 +19,6 @@ const Nav = React.createClass({
       this.props.isLoading ? <i className="fa fa-spinner fa-pulse"></i> : 'iso'
     );
 
-    console.log(spinner);
-
     return (
       <nav className="navbar navbar-inverse navbar-fixed-top">
         <div className="container">

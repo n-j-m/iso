@@ -13,7 +13,6 @@ const TransitionMixin = {
   },
 
   componentDidMount() {
-    console.log('did mount');
     LoadingActions.loadingComplete();
   }
 
