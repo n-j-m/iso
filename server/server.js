@@ -36,7 +36,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-require('./api/config').initPassport();
+require('./api/config').initPassport(passport);
 
 app.use('/assets/img', express.static(path.resolve(__dirname + '/../dist/img/')));
 app.use('/assets/js', express.static(path.resolve(__dirname + '/../dist/js')));

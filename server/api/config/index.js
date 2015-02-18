@@ -1,6 +1,5 @@
 var config = require('./config');
 var User = require('../models/user');
-var passport = require('passport');
 
 module.exports = {
   getConfig: function(key) {
@@ -9,7 +8,7 @@ module.exports = {
     return config[key];
   },
 
-  initPassport: function() {
+  initPassport: function(passport) {
     passport.serializeUser(function(user, done) {
       done(null, user._id);
     });
